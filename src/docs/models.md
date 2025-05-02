@@ -5,7 +5,6 @@ Esta es un programa diseñado para administracion del aplicativo basado en NodeJ
 ## Module - Global
 
 ### ✅ **Tabla `languages` (Lenguages)**
-Registro de lenguages
 
 | Campo        | Tipo        | Descripción |
 |-------------|------------|-------------------------------------------|
@@ -18,19 +17,17 @@ Registro de lenguages
 | `created_at` | Timestamp | Fecha de creación del registro. |
 | `updated_at` | Timestamp | Fecha de la última actualización. |
 
-
-### ✅ **Tabla `genders` (Géneros binarios)**
-Registro de generos universal
-
-| Campo                 | Tipo        | Descripción |
-|----------------------|------------|------------------------------------------------|
-| `id`                | Entero (PK) | Identificador único del género (`1` = Masculino, `0` = Femenino, `NULL` = No especificado). |
-| `slug`              | Texto (ÚNICO) | Nombre en formato de URL (`masculino`, `femenino`, `no-especificado`). |
-| `char_representation` | Texto (1)  | Representación en un solo carácter (`M`, `F`, `N`). |
+### ✅ **Table `genders` (generos)**
+| Field                 | Type          | Description                                       |
+| --------------------- | ------------- | ------------------------------------------------- |
+| `id`                  | Integer (PK)  | Unique identifier for the gender.                 |
+| `binary_value`        | Boolean       | Gender representation (`1` = Male, `0` = Female). |
+| `slug`                | Text (Unique) | URL-friendly name (`male`, `female`).             |
+| `char_representation` | Text (1)      | Single character representation (`M`, `F`).       |
+| `language_code`       | Text (2)      | Language code ISO 639-1 (`en`, `es`, etc.).       |
 
 ### ✅ **Tabla `countries` (Países)**
 Almacena información sobre los países según los estándares ISO 3166-1.
-
 | Campo         | Tipo        | Descripción |
 |--------------|------------|------------------------------------------------|
 | `id`         | Entero (PK) | Identificador único del país. |
@@ -41,8 +38,6 @@ Almacena información sobre los países según los estándares ISO 3166-1.
 | `phone_code` | Texto (1-4) | Código de marcación internacional. |
 | `created_at` | Timestamp | Fecha de creación del registro. |
 | `updated_at` | Timestamp | Fecha de la última actualización. |
-
----
 
 ## Module - Accounts
 
