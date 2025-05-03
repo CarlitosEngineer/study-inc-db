@@ -4,7 +4,7 @@ Esta es un programa diseñado para administracion del aplicativo basado en NodeJ
 
 ## Module - Global
 
-### ✅ **Tabla `languages` (Lenguages)**
+#### ✅ **Tabla `languages` (Lenguages)**
 
 | Campo        | Tipo        | Descripción |
 |-------------|------------|-------------------------------------------|
@@ -17,7 +17,7 @@ Esta es un programa diseñado para administracion del aplicativo basado en NodeJ
 | `created_at` | Timestamp | Fecha de creación del registro. |
 | `updated_at` | Timestamp | Fecha de la última actualización. |
 
-### ✅ **Table `genders` (generos)**
+#### ✅ **Table `genders` (generos)**
 | Field                 | Type          | Description                                       |
 | --------------------- | ------------- | ------------------------------------------------- |
 | `id`                  | Integer (PK)  | Unique identifier for the gender.                 |
@@ -26,7 +26,7 @@ Esta es un programa diseñado para administracion del aplicativo basado en NodeJ
 | `char_representation` | Text (1)      | Single character representation (`M`, `F`).       |
 | `language_code`       | Text (2)      | Language code ISO 639-1 (`en`, `es`, etc.).       |
 
-### ✅ **Tabla `countries` (Países)**
+#### ✅ **Tabla `countries` (Países)**
 Almacena información sobre los países según los estándares ISO 3166-1.
 | Campo         | Tipo        | Descripción |
 |--------------|------------|------------------------------------------------|
@@ -39,9 +39,34 @@ Almacena información sobre los países según los estándares ISO 3166-1.
 | `created_at` | Timestamp | Fecha de creación del registro. |
 | `updated_at` | Timestamp | Fecha de la última actualización. |
 
+## Module - cards (cartas)
+
+#### ✅ **Tabla `cards` (Imágenes para Flashcards)**
+Imágenes asociadas para ilustrar tarjetas de estudio visualmente.
+
+| Campo               | Tipo          | Descripción                                           |
+|---------------------|---------------|-------------------------------------------------------|
+| `id`                | Entero (PK)   | Identificador único de la imagen asociada a la tarjeta. |
+| `image_icon_url`    | Texto         | URL de la imagen en versión icono o miniatura.        |
+| `image_real_url`    | Texto         | URL de la imagen completa (alta resolución).          |
+| `created_at`        | Timestamp     | Fecha y hora de creación del registro.                |
+| `updated_at`        | Timestamp     | Fecha y hora de la última actualización del registro. |
+
+#### ✅ **Tabla `translations` (Traducciones de tarjetas)**
+Traducciones asociadas a cada tarjeta según diferentes idiomas.
+
+| Campo             | Tipo           | Descripción                                           |
+|-------------------|----------------|-------------------------------------------------------|
+| `id`              | Entero (PK)    | Identificador único de la traducción.                 |
+| `card_id`         | Entero (FK)    | Referencia a la tarjeta asociada (`cards.id`).        |
+| `languages_id`   | Entero (FK)  | Código ISO del idioma (`"en"`, `"es"`, `"eng"`).      |
+| `word`            | Texto          | Palabra traducida en el idioma indicado.              |
+| `created_at`      | Timestamp      | Fecha y hora de creación del registro.                |
+| `updated_at`      | Timestamp      | Fecha y hora de la última actualización del registro. |
+
 ## Module - Accounts
 
-### **Tabla `accounts` (Identificación única del usuario)**
+#### **Tabla `accounts` (Identificación única del usuario)**
 Esta tabla almacena el **ID base del usuario** y actúa como referencia para las demás.  
 
 | Campo    | Tipo        | Descripción |
@@ -72,7 +97,7 @@ Esta tabla almacena el **ID base del usuario** y actúa como referencia para las
 
 ## Module - Otros
 
-### **Tabla `statuses` (Estados de Citas)**
+#### **Tabla `statuses` (Estados de Citas)**
 Almacena los diferentes estados posibles de una cita, permitiendo flexibilidad en caso de que se necesiten agregar nuevos estados en el futuro.
 
 | Campo  | Tipo        | Descripción |
@@ -83,28 +108,3 @@ Almacena los diferentes estados posibles de una cita, permitiendo flexibilidad e
 | `color_code` | Texto (7) | Código de color HEX (`#FFCC00` para "Pendiente", `#00CC00` para "Aprobado"). |
 | `created_at` | Timestamp  | Fecha de creación del registro. |
 | `updated_at` | Timestamp  | Fecha de la última actualización. |
-
-## Module - cards
-
-### ✅ **Tabla `cards` (Imágenes para Flashcards)**
-Imágenes asociadas para ilustrar tarjetas de estudio visualmente.
-
-| Campo               | Tipo          | Descripción                                           |
-|---------------------|---------------|-------------------------------------------------------|
-| `id`                | Entero (PK)   | Identificador único de la imagen asociada a la tarjeta. |
-| `image_icon_url`    | Texto         | URL de la imagen en versión icono o miniatura.        |
-| `image_real_url`    | Texto         | URL de la imagen completa (alta resolución).          |
-| `created_at`        | Timestamp     | Fecha y hora de creación del registro.                |
-| `updated_at`        | Timestamp     | Fecha y hora de la última actualización del registro. |
-
-### ✅ **Tabla `translations` (Traducciones de tarjetas)**  
-Traducciones asociadas a cada tarjeta según diferentes idiomas.
-
-| Campo             | Tipo           | Descripción                                           |
-|-------------------|----------------|-------------------------------------------------------|
-| `id`              | Entero (PK)    | Identificador único de la traducción.                 |
-| `card_id`         | Entero (FK)    | Referencia a la tarjeta asociada (`cards.id`).        |
-| `languages_id`   | Entero (FK)  | Código ISO del idioma (`"en"`, `"es"`, `"eng"`).      |
-| `word`            | Texto          | Palabra traducida en el idioma indicado.              |
-| `created_at`      | Timestamp      | Fecha y hora de creación del registro.                |
-| `updated_at`      | Timestamp      | Fecha y hora de la última actualización del registro. |
