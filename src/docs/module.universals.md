@@ -10,7 +10,7 @@ El modulo universal, consiste en almacenar todas aquellas tablas que sirvan para
 
 | Campo                 | Tipo         | Descripción                                                 |
 | --------------------- | ------------ | ----------------------------------------------------------- |
-| `binary_value`        | Boolean (PK) | Valor binario del género (`TRUE` = Male, `FALSE` = Female). |
+| `id`        | Boolean (PK) | Valor binario del género (`TRUE` = Male, `FALSE` = Female). |
 | `slug`                | Text         | Nombre URL-friendly (`male`, `female`).                     |
 | `char_representation` | Text (1)     | Representación corta (`M`, `F`).                            |
 
@@ -21,7 +21,7 @@ El modulo universal, consiste en almacenar todas aquellas tablas que sirvan para
 | Campo             | Tipo         | Descripción                                                   |
 | ----------------- | ------------ | ------------------------------------------------------------- |
 | `id`              | Integer (PK) | Identificador único de la traducción.                         |
-| `binary_value`    | Boolean      | FK a `genders(binary_value)`, representa el género.           |
+| `gender_id`       | Boolean      | FK a `genders(binary_value)`, representa el género.           |
 | `language_id`     | Integer      | FK a `languages(id)`, representa el idioma de traducción.     |
 | `translated_slug` | Text         | Slug traducido (`masculino`, `femenino`, etc.).               |
 | `translated_char` | Text (1)     | Letra correspondiente en el idioma (`H` para "Hombre", etc.). |
@@ -30,16 +30,16 @@ El modulo universal, consiste en almacenar todas aquellas tablas que sirvan para
 
 > Esta tabla contiene una lista de idiomas
 
-| Campo        | Tipo        | Descripción |
-|-------------|------------|-------------------------------------------|
-| `id`        | Entero (PK) | Identificador único del idioma.          |
-| `language_name` | Texto   | Nombre del idioma (ej. "English", "Español"). |
-| `language_code_2` | Texto (2) | Código ISO 639-1 (ej. "en", "es"). |
-| `language_code_3` | Texto (3) | Código ISO 639-2/3 (ej. "eng", "spa"). |
-| `text_direction` | Texto (3) | Enum Writing & read directions (`"LTR"`, `"RTL"`) |
-| `is_active` | Booleano | Define si el idioma está activo en el sistema. |
-| `created_at` | Timestamp | Fecha de creación del registro. |
-| `updated_at` | Timestamp | Fecha de la última actualización. |
+| Campo             | Tipo              | Descripción |
+|-------------------|-------------------|-------------------------------------------|
+| `id`              | Entero (PK)       | Identificador único del idioma (clave primaria).          |
+| `language_name`   | Texto (ÚNICO)     | Nombre del idioma (Ej: Español, English, Français). |
+| `language_code_2` | Texto (2) (ÚNICO) | Código ISO de 2 letras del idioma (Ej: "es", "en", "fr"). |
+| `language_code_3` | Texto (3) (ÚNICO) | Código ISO de 3 letras del idioma (Ej: "spa", "eng", "fra"). |
+| `text_direction`  | Texto (3)         | Dirección del texto: "LTR" (Left to Right) o "RTL" (Right to Left). |
+| `is_active`       | Booleano          | Indica si el idioma está activo (true) o inactivo (false). |
+| `created_at`      | Timestamp         | Fecha y hora de creación del registro. |
+| `updated_at`      | Timestamp         | Fecha y hora de la última modificación del registro. |
 
 ##### ✅ 4. **Tabla `countries` (países)**
 

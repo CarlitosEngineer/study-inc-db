@@ -14,7 +14,7 @@ REM Ruta de PostgreSQL (Asegúrate de que sea correcta)
 set PGDUMP_PATH=C:\Program Files\PostgreSQL\17\bin\pg_dump.exe
 
 REM Ruta donde se guardarán los backups
-set BACKUP_DIR=C:\Users\carlo\Documents\arcee\src\backups
+set BACKUP_DIR=C:\Users\carlo\Documents\study-inc-db\src\backups
 
 REM Obtener fecha y hora para el nombre del archivo (formato YYYYMMDD_HHMMSS)
 for /f "tokens=2 delims==" %%I in ('wmic os get localdatetime /value') do set DATETIME=%%I

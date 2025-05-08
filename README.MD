@@ -92,3 +92,12 @@ Italiano (arte, moda, cultura)
 ✅ **Sugerencia:** si tu app está pensada para *usuarios internacionales*, prioriza **inglés, español, francés, portugués, chino mandarín y árabe**. Si es más **regional (Latinoamérica o Europa)**, dale más peso al español, portugués, inglés, francés y alemán.
 
 ¿Quieres enfocarte solo en idiomas por número de hablantes, por uso en internet, o por demanda para aprendizaje?
+
+
+
+
+
+
+
+
+

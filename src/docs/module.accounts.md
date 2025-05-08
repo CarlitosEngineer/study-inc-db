@@ -2,6 +2,10 @@
 
 ## Module - Accounts (Cuentas)
 
+- Punto 1 - existirán dos tipos de cuentas las cuentas de los usuarios y las cuentas de los administradores 
+- Punto 2 - los administradores tienen el poder de evitar o modificar las cuentas de usuario 
+- Punto 3 - las cuentas de los usuarios sirven para almacenar el contenido del usuario tanta información personal como educativa siempre y cuando pertenezca al usuario 
+
 #### **Tabla `accounts` (Identificación única del usuario)**
 Esta tabla almacena el **ID base del usuario** y actúa como referencia para las demás.  
 
@@ -20,7 +24,7 @@ Esta tabla almacena el **ID base del usuario** y actúa como referencia para las
 | `password_hash` | Texto    | Contraseña en formato hash. |
 
 | `is_verified` | Booleano  | `true` si el correo está verificado, `false` si no. |
-| `is_verified_user` | Booleano | `true` si el usuario ha sido verificado (ejemplo: KYC o manualmente). |
+| `is_verified_user`| Booleano | `true` si el usuario ha sido verificado (ejemplo: KYC o manualmente). |
 | `uses_dark_mode` | Booleano | `true` = Modo oscuro, `false` = Modo claro. |
 
 | `gender_id`  | Entero (FK) | Referencia a `genders.id` (puede ser NULL). |

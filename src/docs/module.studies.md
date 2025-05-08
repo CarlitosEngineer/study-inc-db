@@ -34,10 +34,7 @@ La tabla `word_subcategories` permite definir subcategorías dentro de una categ
 
 * Las `word_subcategories` son **únicas en todo el sistema** y no pueden repetirse, incluso si pertenecen a categorías diferentes.
 
-
-
-
-##### ✅ 1. **Tabla `words` (Imágenes para Flashcards)**
+##### ✅ 3. **Tabla `words` (Imágenes para Flashcards)**
 
 La tabla almacena imágenes relacionadas con tarjetas de estudio, con **una imagen miniatura y una en alta resolución**.
 
@@ -49,7 +46,7 @@ La tabla almacena imágenes relacionadas con tarjetas de estudio, con **una imag
 | `created_at`     | Timestamp    | Fecha y hora de creación.                    |
 | `updated_at`     | Timestamp    | Fecha y hora de última actualización.        |
 
-##### ✅ 2. **Tabla `word_translateds` (Traducciones de tarjetas)**
+##### ✅ 4. **Tabla `word_translateds` (Traducciones de tarjetas)**
 
 Esta tabla vincula cada tarjeta (`cards.id`) con su traducción en un idioma específico. Para la relación con idiomas usaremos el `languages.id` de tu tabla `languages` ya definida antes.
 

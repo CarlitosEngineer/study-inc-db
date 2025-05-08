@@ -69,3 +69,102 @@ Se hace a través de **formas normales (NF)**. Las más comunes son:
 | 1NF          | Grupos repetidos y no atómicos |
 | 2NF          | Dependencias parciales         |
 | 3NF          | Dependencias transitivas       |
+
+
+
+
+
+
+
+
+
+
+
+¡Excelente decisión, muy clara y práctica para tu caso! 🙌
+
+Aquí tienes tu tabla `words` **modificada** para cumplir exactamente con tu nuevo enfoque: una tabla **unificada** donde cada columna es un idioma, junto con las imágenes.
+
+He mantenido el formato `README.md` y mejorado la redacción para que quede limpia y profesional:
+
+---
+
+### ✅ 1. **Tabla `words` (Palabras con imágenes y traducciones en múltiples idiomas)**
+
+La tabla `words` almacena las palabras traducidas en 16 idiomas junto con una imagen miniatura y una imagen en alta resolución asociadas al concepto.
+
+| Campo            | Tipo         | Descripción                                 |
+| ---------------- | ------------ | ------------------------------------------- |
+| `id`             | Integer (PK) | Identificador único de la palabra/concepto. |
+| `image_icon_url` | Text         | URL de la imagen miniatura o ícono.         |
+| `image_real_url` | Text         | URL de la imagen en alta resolución.        |
+| `english`        | Text         | Palabra en inglés.                          |
+| `mandarin`       | Text         | Palabra en mandarín.                        |
+| `hindi`          | Text         | Palabra en hindi.                           |
+| `spanish`        | Text         | Palabra en español.                         |
+| `french`         | Text         | Palabra en francés.                         |
+| `arabic`         | Text         | Palabra en árabe estándar.                  |
+| `bengali`        | Text         | Palabra en bengalí.                         |
+| `portuguese`     | Text         | Palabra en portugués.                       |
+| `russian`        | Text         | Palabra en ruso.                            |
+| `urdu`           | Text         | Palabra en urdu.                            |
+| `indonesian`     | Text         | Palabra en indonesio.                       |
+| `german`         | Text         | Palabra en alemán.                          |
+| `japanese`       | Text         | Palabra en japonés.                         |
+| `swahili`        | Text         | Palabra en suajili.                         |
+| `korean`         | Text         | Palabra en coreano.                         |
+| `italian`        | Text         | Palabra en italiano.                        |
+| `created_at`     | Timestamp    | Fecha y hora de creación.                   |
+| `updated_at`     | Timestamp    | Fecha y hora de última actualización.       |
+
+---
+
+🎯 **Notas importantes:**
+
+* Cada fila representa **un único concepto o palabra**, traducido en los 16 idiomas y asociado a una imagen.
+* Si no existe traducción para un idioma específico, el valor puede ser **NULL**.
+* Este diseño es ideal si **nunca necesitas agregar idiomas nuevos en el futuro** (ya que implicaría modificar la estructura de la tabla).
+
+---
+
+✅ ¡Ahora tienes una estructura simple, directa y perfectamente alineada con tu decisión de mantener un conjunto de idiomas fijo!
+
+¿Quieres añadir validaciones, restricciones o algún índice adicional? 😄
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+| `english`        | Text         | Palabra en inglés.                          |
+| `mandarin`       | Text         | Palabra en mandarín.                        |
+| `hindi`          | Text         | Palabra en hindi.                           |
+| `spanish`        | Text         | Palabra en español.                         |
+| `french`         | Text         | Palabra en francés.                         |
+| `arabic`         | Text         | Palabra en árabe estándar.                  |
+| `bengali`        | Text         | Palabra en bengalí.                         |
+| `portuguese`     | Text         | Palabra en portugués.                       |
+| `russian`        | Text         | Palabra en ruso.                            |
+| `urdu`           | Text         | Palabra en urdu.                            |
+| `indonesian`     | Text         | Palabra en indonesio.                       |
+| `german`         | Text         | Palabra en alemán.                          |
+| `japanese`       | Text         | Palabra en japonés.                         |
+| `swahili`        | Text         | Palabra en suajili.                         |
+| `korean`         | Text         | Palabra en coreano.                         |
+| `italian`        | Text         | Palabra en italiano.                        |
