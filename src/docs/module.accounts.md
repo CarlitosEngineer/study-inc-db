@@ -18,7 +18,7 @@ Esta tabla almacena el **ID base del usuario** y actúa como referencia para las
 | `last_name`  | Texto       | Apellido(s) del usuario (puede ser NULL si no se proporciona). |
 | `birthdate`  | Fecha       | Fecha de nacimiento. |
 
-| `score` | Entero | puntuacion de la cuenta, DEFAULT 0 |
+| `score` | Money | puntuacion de la cuenta, DEFAULT 0 |
 
 | `email`      | Texto (ÚNICO) | Dirección de correo electrónico. |
 | `password_hash` | Texto    | Contraseña en formato hash. |

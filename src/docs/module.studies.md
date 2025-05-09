@@ -1,4 +1,4 @@
-# Documentación
+# Documentación - vocabulary
 
 ## Module - Studies (Estudios)
 
@@ -16,23 +16,6 @@ La tabla `word_categories` define las categorías principales utilizadas para or
 🎯 **Reglas de negocio:**
 
 * Las `word_categories` son **únicas** y no se repiten.
-* Una `word_categories` puede tener **varias `word_subcategories` asociadas.**
-
-##### ✅ 2. **Tabla `word_subcategories` (Subcategorías)**
-
-La tabla `word_subcategories` permite definir subcategorías dentro de una categoría principal. Por ejemplo, *Animales domésticos* puede ser una subcategoría dentro de *Animales*.
-
-| Campo         | Tipo         | Descripción                                            |
-| ------------- | ------------ | ------------------------------------------------------ |
-| `id`          | Integer (PK) | Identificador único de la subcategoría.                |
-| `category_id` | Integer (FK) | Referencia a la categoría principal (`categories.id`). |
-| `name`        | Text         | Nombre de la subcategoría.                             |
-| `created_at`  | Timestamp    | Fecha y hora de creación del registro.                 |
-| `updated_at`  | Timestamp    | Fecha y hora de última actualización.                  |
-
-🎯 **Reglas de negocio:**
-
-* Las `word_subcategories` son **únicas en todo el sistema** y no pueden repetirse, incluso si pertenecen a categorías diferentes.
 
 ##### ✅ 3. **Tabla `words` (Imágenes para Flashcards)**
 
@@ -76,26 +59,6 @@ Esta tabla vincula cada tarjeta (`cards.id`) con su traducción en un idioma esp
 
 
 
-✅ **Idiomas extraídos, sin repetir:**
-
-01. Inglés
-02. Mandarín
-03. Hindi
-04. Español
-05. Francés
-06. Árabe (estándar)
-07. Bengalí
-08. Portugués
-09. Ruso
-10. Urdu
-11. Indonesio
-12. Alemán
-13. Japonés
-14. Suajili
-15. Coreano
-16. Italiano
-
-👉 Nota: "Mandarín" y "Chino mandarín" son lo mismo, solo contado una vez.
 
 
 
@@ -107,67 +70,108 @@ Esta tabla vincula cada tarjeta (`cards.id`) con su traducción en un idioma esp
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+¡Excelente elección, Carlitos! 🙌 Me parece **una decisión muy acertada y profesional**.
+
+✅ Usar el prefijo `word_` es **claro, semánticamente correcto y coherente** porque refleja que el contenido de cada columna es **la palabra o la traducción en su forma natural**, no una versión “slug” o reducida.
 
 ---
 
-### ✅ 5. **Asociación de tarjetas con categorías/subcategorías**
+## 🎯 **Por qué es una buena decisión:**
 
-Si **una tarjeta solo pertenece a una subcategoría**, puedes agregar una clave foránea directa en `cards`:
-
-| Campo            | Tipo         | Descripción                                        |
-| ---------------- | ------------ | -------------------------------------------------- |
-| `subcategory_id` | Integer (FK) | Referencia a la subcategoría (`subcategories.id`). |
-
-👉 Si **una tarjeta puede pertenecer a varias subcategorías al mismo tiempo**, entonces necesitas una **tabla de relación** así:
-
-#### **Tabla `card_subcategory` (Relación tarjetas-subcategorías)**
-
-| Campo            | Tipo         | Descripción                                        |
-| ---------------- | ------------ | -------------------------------------------------- |
-| `id`             | Integer (PK) | Identificador único del registro.                  |
-| `card_id`        | Integer (FK) | Referencia a la tarjeta (`cards.id`).              |
-| `subcategory_id` | Integer (FK) | Referencia a la subcategoría (`subcategories.id`). |
+✔️ El prefijo `word_` deja claro a cualquier desarrollador o colaborador que **la columna almacena una palabra o frase traducida**, lista para mostrar al usuario final.
+✔️ Evita confusión sobre si es un slug, label, o identificador.
+✔️ Es **consistente y escalable** si agregas más idiomas a futuro (`word_en`, `word_es`, `word_fr`, etc.).
 
 ---
 
-✅ **Notas adicionales:**
+## ✅ **Versión final de tu tabla `vocabulary`:**
 
-* Una subcategoría siempre pertenece a una categoría.
-* Puedes usar solo categorías o categorías + subcategorías, según la complejidad que busques.
-* Si planeas navegación por temas, estas tablas te ayudarán a estructurar rutas o filtros.
+Aquí te la presento ya estructurada profesionalmente:
 
-¿Prefieres la relación **uno a uno** (una tarjeta solo tiene una subcategoría) o **muchos a muchos** (una tarjeta puede estar en varias subcategorías)? Así puedo ajustarlo si necesitas. 😊
+| Campo            | Tipo         | Descripción                                                |
+| ---------------- | ------------ | ---------------------------------------------------------- |
+| `id`             | Integer (PK) | Identificador único de la palabra/concepto.                |
+| `image_icon_url` | Text         | URL de la imagen miniatura o ícono.                        |
+| `image_real_url` | Text         | URL de la imagen en alta resolución.                       |
+| `word_en`        | Text         | Traducción en inglés.                                      |
+| `word_zh`        | Text         | Traducción en mandarín.                                    |
+| `word_hi`        | Text         | Traducción en hindi.                                       |
+| `word_es`        | Text         | Traducción en español.                                     |
+| `word_fr`        | Text         | Traducción en francés.                                     |
+| `word_ar`        | Text         | Traducción en árabe.                                       |
+| `word_bn`        | Text         | Traducción en bengalí.                                     |
+| `word_pt`        | Text         | Traducción en portugués.                                   |
+| `word_ru`        | Text         | Traducción en ruso.                                        |
+| `word_ur`        | Text         | Traducción en urdu.                                        |
+| `word_id_`       | Text         | Traducción en indonesio. *(nota: id es palabra reservada)* |
+| `word_de`        | Text         | Traducción en alemán.                                      |
+| `word_ja`        | Text         | Traducción en japonés.                                     |
+| `word_sw`        | Text         | Traducción en suajili.                                     |
+| `word_ko`        | Text         | Traducción en coreano.                                     |
+| `word_it`        | Text         | Traducción en italiano.                                    |
+| `created_at`     | Timestamp    | Fecha y hora de creación.                                  |
+| `updated_at`     | Timestamp    | Fecha y hora de última actualización.                      |
 
+---
 
+## 📝 **SQL para crearla:**
 
+```sql
+CREATE TABLE vocabulary (
+    id SERIAL PRIMARY KEY,
+    image_icon_url TEXT,
+    image_real_url TEXT,
+    word_en TEXT,
+    word_zh TEXT,
+    word_hi TEXT,
+    word_es TEXT,
+    word_fr TEXT,
+    word_ar TEXT,
+    word_bn TEXT,
+    word_pt TEXT,
+    word_ru TEXT,
+    word_ur TEXT,
+    word_id_ TEXT, -- evitar conflicto con id
+    word_de TEXT,
+    word_ja TEXT,
+    word_sw TEXT,
+    word_ko TEXT,
+    word_it TEXT,
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW()
+);
+```
 
+✅ Ya corregí `word_id_` para evitar conflictos por la palabra reservada `id`.
 
+---
 
+## 🚀 **Ventajas de este esquema:**
 
+✅ Claridad: fácil de entender qué almacena cada columna.
+✅ Consistencia: todas las columnas de idiomas siguen el mismo patrón.
+✅ Facilidad de consulta:
 
+```sql
+SELECT word_en, word_es FROM vocabulary WHERE id = 1;
+```
 
+✅ Escalable: si agregas otro idioma solo necesitas agregar `word_xx` nuevo.
 
+---
 
-| Campo            | Tipo         | Descripción                                 |
-| ---------------- | ------------ | ------------------------------------------- |
-| `id`             | Integer (PK) | Identificador único de la palabra/concepto. |
-| `image_icon_url` | Text         | URL de la imagen miniatura o ícono.         |
-| `image_real_url` | Text         | URL de la imagen en alta resolución.        |
-| `english`        | Text         | Palabra en inglés.                          |
-| `mandarin`       | Text         | Palabra en mandarín.                        |
-| `hindi`          | Text         | Palabra en hindi.                           |
-| `spanish`        | Text         | Palabra en español.                         |
-| `french`         | Text         | Palabra en francés.                         |
-| `arabic`         | Text         | Palabra en árabe estándar.                  |
-| `bengali`        | Text         | Palabra en bengalí.                         |
-| `portuguese`     | Text         | Palabra en portugués.                       |
-| `russian`        | Text         | Palabra en ruso.                            |
-| `urdu`           | Text         | Palabra en urdu.                            |
-| `indonesian`     | Text         | Palabra en indonesio.                       |
-| `german`         | Text         | Palabra en alemán.                          |
-| `japanese`       | Text         | Palabra en japonés.                         |
-| `swahili`        | Text         | Palabra en suajili.                         |
-| `korean`         | Text         | Palabra en coreano.                         |
-| `italian`        | Text         | Palabra en italiano.                        |
-| `created_at`     | Timestamp    | Fecha y hora de creación.                   |
-| `updated_at`     | Timestamp    | Fecha y hora de última actualización.       |
+👉 **Muy buena decisión, profesional y práctica.**
+¿Te gustaría agregar alguna restricción (por ejemplo, `NOT NULL` en algunos campos) o índices especiales? 😄
